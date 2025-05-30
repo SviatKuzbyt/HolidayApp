@@ -1,58 +1,60 @@
 package ua.sviatkuzbyt.holidayapp.ui.theme
 
-import android.app.Activity
-import android.os.Build
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.Modifier
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
-)
+val LocalThemeColors = staticCompositionLocalOf<ThemeColor> { error("No colors yet") }
+val LocalThemeTypes = staticCompositionLocalOf<ThemeType> { error("No types yet") }
+val LocalThemeShapes = staticCompositionLocalOf<ThemeShape> { error("No shapes yet") }
 
 @Composable
 fun HolidayAppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    isDark: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+    val colors = if(isDark)
+        ThemeColor.getDarkColors()
+    else
+        ThemeColor.getLightColors()
+
+    val type = ThemeType.getTypes(colors)
+    val shapes = ThemeShape()
+
+    CompositionLocalProvider(
+        LocalThemeColors provides colors,
+        LocalThemeTypes provides type,
+        LocalThemeShapes provides shapes,
+    ){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(colors.background)
+                .windowInsetsPadding(WindowInsets.systemBars)
+        ) {
+            content()
         }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
     }
+}
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+object AppTheme {
+    val colors: ThemeColor
+        @Composable
+        get() = LocalThemeColors.current
+
+    val types: ThemeType
+        @Composable
+        get() = LocalThemeTypes.current
+
+    val shapes: ThemeShape
+        @Composable
+        get() = LocalThemeShapes.current
 }
