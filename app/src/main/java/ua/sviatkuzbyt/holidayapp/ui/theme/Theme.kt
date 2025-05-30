@@ -37,7 +37,7 @@ fun HolidayAppTheme(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(colors.background)
+                .background(colors.secondary)
                 .windowInsetsPadding(WindowInsets.systemBars)
         ) {
             content()
