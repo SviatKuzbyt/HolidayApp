@@ -12,7 +12,8 @@ data class ThemeType(
     val basic: TextStyle,
     val boldSmall: TextStyle,
     val blue: TextStyle,
-    val white: TextStyle
+    val white: TextStyle,
+    val gray: TextStyle
 ){
     companion object{
         private val fontFamily = FontFamily(
@@ -51,6 +52,12 @@ data class ThemeType(
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
                 color = colors.textWhite
+            ),
+            gray = TextStyle(
+                fontFamily = fontFamily,
+                fontWeight = FontWeight.Normal,
+                fontSize = 16.sp,
+                color = colors.textSecondary
             )
         )
     }

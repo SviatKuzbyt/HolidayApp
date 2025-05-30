@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">HolidayApp</string>
+    <string name="country_hint">Country (UA)</string>
+    <string name="year_hint">Year (2025)</string>
+    <string name="update">Update</string>
 </resources>
