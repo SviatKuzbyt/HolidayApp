@@ -1,12 +1,10 @@
-package ua.sviatkuzbyt.holidayapp.ui.elements
+package ua.sviatkuzbyt.holidayapp.ui.elements.topbar
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -18,10 +16,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import ua.sviatkuzbyt.holidayapp.R
+import ua.sviatkuzbyt.holidayapp.ui.elements.basic.MainButton
 import ua.sviatkuzbyt.holidayapp.ui.theme.AppTheme
 
 @Composable
-fun ColumnScope.FilterSetupContent(
+fun ColumnScope.FilterSetup(
     countryText: String,
     onCountryChange: (String) -> Unit,
     yearText: String,

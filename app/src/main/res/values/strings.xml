@@ -3,4 +3,7 @@
     <string name="country_hint">Country (UA)</string>
     <string name="year_hint">Year (2025)</string>
     <string name="update">Update</string>
+    <string name="error">Icon error</string>
+    <string name="retry">Retry</string>
+    <string name="no_internet">There is no Internet connection. Check your connection and try again</string>
 </resources>

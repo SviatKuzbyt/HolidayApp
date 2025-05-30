@@ -2,15 +2,14 @@ package ua.sviatkuzbyt.holidayapp.ui.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import ua.sviatkuzbyt.holidayapp.ui.elements.FilterSetupContent
-import ua.sviatkuzbyt.holidayapp.ui.elements.MainList
-import ua.sviatkuzbyt.holidayapp.ui.elements.MainTopBar
-import ua.sviatkuzbyt.holidayapp.ui.screen.control.FilterSetup
+import ua.sviatkuzbyt.holidayapp.ui.elements.topbar.FilterSetup
+import ua.sviatkuzbyt.holidayapp.ui.elements.list.MainList
+import ua.sviatkuzbyt.holidayapp.ui.elements.topbar.MainTopBar
 import ua.sviatkuzbyt.holidayapp.ui.screen.control.MainState
 
 @Composable
 fun MainScreen(){
-    MainContent(MainState(FilterSetup()))
+    MainContent(MainState())
 }
 
 @Composable
@@ -22,8 +21,8 @@ fun MainContent(
             println("SKLT Hello world from MainTopBar")
         }
 
-        state.filterSetup?.let {
-            FilterSetupContent(
+        state.filterTexts?.let {
+            FilterSetup(
                 countryText = "",
                 onCountryChange = {},
                 yearText = "",
@@ -32,7 +31,7 @@ fun MainContent(
             )
         }
 
-        MainList()
+        MainList(state.listState)
     }
 }
 

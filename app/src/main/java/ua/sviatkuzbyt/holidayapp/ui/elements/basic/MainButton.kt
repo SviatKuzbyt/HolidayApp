@@ -1,4 +1,4 @@
-package ua.sviatkuzbyt.holidayapp.ui.elements
+package ua.sviatkuzbyt.holidayapp.ui.elements.basic
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

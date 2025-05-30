@@ -1,4 +1,4 @@
-package ua.sviatkuzbyt.holidayapp.ui.elements
+package ua.sviatkuzbyt.holidayapp.ui.elements.topbar
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
