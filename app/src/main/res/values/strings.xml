@@ -6,4 +6,5 @@
     <string name="error">Icon error</string>
     <string name="retry">Retry</string>
     <string name="no_internet">There is no Internet connection. Check your connection and try again</string>
+    <string name="add_to_calendar">Add to calendar</string>
 </resources>

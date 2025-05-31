@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import ua.sviatkuzbyt.holidayapp.ui.other.indicationClick
 import ua.sviatkuzbyt.holidayapp.ui.theme.AppTheme
 
 @Composable
@@ -24,13 +25,9 @@ fun MainButton(
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-            .clickable(
-                onClick = onClick,
-                role = Role.Button,
-                interactionSource = null,
-                indication = ripple(
-                    color = AppTheme.colors.secondary
-                )
+            .indicationClick(
+                color = AppTheme.colors.secondary,
+                onClick = onClick
             )
             .heightIn(48.dp)
             .background(
