@@ -2,10 +2,12 @@ package ua.sviatkuzbyt.holidayapp.ui.screen.control
 
 import androidx.annotation.StringRes
 import ua.sviatkuzbyt.holidayapp.data.Holiday
+import ua.sviatkuzbyt.holidayapp.data.Month
 
 data class MainState(
     val filterTexts: FilterTexts? = null,
-    val listState: ListState = ListState.Loading
+    val listState: ListState = ListState.Loading,
+    val month: Month = Month.January
 )
 
 data class FilterTexts(
